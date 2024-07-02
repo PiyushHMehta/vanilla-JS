@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="button">click to get text</button>
+
+    <br />
+    <br />
+
+    <div id="text"></div>
+
+    <script>
+      // create event listener
+      document.getElementById("button").addEventListener("click", loadText);
+
+      function loadText() {
+        // create xhr object
+        var xhr = new XMLHttpRequest();
+        // console.log(xhr.readyState);
+
+        // open - type, url/filename, async or not
+        xhr.open("GET", "sample.txt", true);
+
+        // optional - used for loaders
+        // xhr.onprogress = function() {
+        //     console.log(xhr.readyState);
+        // }
+
+        // console.log(xhr.readyState);
+        xhr.onload = function () {
+          if (this.status == 200) {
+            const textBox = document.querySelector("#text");
+            textBox.innerHTML = this.responseText;
+          } else if (this.status == 404) {
+            const textBox = document.querySelector("#text");
+            textBox.innerHTML = "Not found";
+          }
+        };
+
+        xhr.onerror = function () {
+          console.log("error retrieving data");
+        };
+
+        // old way
+        // xhr.onreadystatechange = function () {
+        //   console.log(xhr.readyState);
+        //   if (this.status == 200 && this.readyState == 4) {
+        //     // console.log(this.responseText);
+        //   }
+        // };
+
+        // sends requested data
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
+
+<!-- 
+UNSENT (0):
+The XHR object has been created, but open() method has not been called yet.
+
+OPENED (1):
+The open() method has been called. During this state, you can set request headers using setRequestHeader() method if needed.
+
+HEADERS_RECEIVED (2):
+The open() method and send() method have been called, and the XHR object is receiving response headers from the server. You can access the headers using xhr.getAllResponseHeaders() at this stage.
+
+LOADING (3):
+The XHR object is downloading the response data. Depending on the responseType set (default is "" or text), you can access the partial response using xhr.responseText, xhr.responseXML, etc., in this state.
+
+DONE (4):
+The operation is complete. This is when the entire response has been received and is available. You can handle the received data, check the status (xhr.status), and process the response (xhr.responseText, xhr.responseXML, etc.) in this state. -->
