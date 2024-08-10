@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brownie Bakery</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <style>
+      .text-info {
+        font-size: 2rem; /* Increased size */
+      }
+      .text-muted {
+        font-size: 1.2rem; /* Increased size */
+      }
+      .modal-body p {
+        font-size: 1.2rem; /* Matching font size in the modal */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="text-center py-5">
+      <h1>Brownie Bakery</h1>
+    </header>
+    <main class="container">
+      <!-- Single Image -->
+      <div class="text-center">
+        <img
+          src="./images/brownie1.jpg"
+          class="img-fluid rounded shadow"
+          alt="Delicious Brownie"
+        />
+      </div>
+      <!-- Sweet Text -->
+      <div class="text-center my-5">
+        <h2>Welcome to Brownie Bakery!</h2>
+        <p class="text-muted mt-3" style="font-size: 1.2rem">
+          I love desserts and baking them, so this passion drove me to pursue baking and create delicious treats for you to enjoy!
+        </p>
+        <p class="text-info" style="font-size: 2rem">
+          Make your weekend delightful with our fresh brownies!
+        </p>
+        <p class="text-muted" style="font-size: 1.2rem">
+          Note: Orders are only accepted on weekends.
+        </p>
+      </div>
+      <!-- Checkout Button -->
+      <div class="text-center">
+        <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
+      </div>
+    </main>
+
+    <!-- Admin Button -->
+    <div id="viewOrdersBtnContainer" class="text-right p-3">
+      <button id="viewOrdersBtn" class="btn btn-secondary">View Orders</button>
+    </div>
+
+    <!-- Modal for Checkout -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-body">
+          <div class="modal-image">
+            <img src="./images/brownie1.jpg" alt="Brownies" />
+          </div>
+          <div class="modal-form">
+            <label for="customerName">Name:</label>
+            <input
+              type="text"
+              id="customerName"
+              placeholder="Your Name"
+              required
+            />
+            <label for="customerContact">Contact Number:</label>
+            <input
+              type="text"
+              id="customerContact"
+              placeholder="Your Contact Number"
+              required
+            />
+            <label for="numberOfPieces">Number of Pieces:</label>
+            <input type="number" id="numberOfPieces" min="1" required />
+            <button id="orderBtn">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Modal for Admin -->
+    <div id="adminModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-body">
+          <h4>Admin Access Only</h4>
+          <p>This section is only accessible to administrators.</p>
+          <form id="adminLoginForm">
+            <label for="adminPassword">Enter Admin Password:</label>
+            <input type="password" id="adminPassword" placeholder="Admin Password" required />
+            <button type="submit" class="btn btn-primary mt-2">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Toastify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/admin.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
